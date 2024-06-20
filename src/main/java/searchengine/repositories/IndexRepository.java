@@ -47,7 +47,7 @@ public interface IndexRepository extends JpaRepository<IndexEntity, Integer> {
     Integer getMaxAbsRel(@Param("lemmaEntityList") List<LemmaEntity> lemmaEntityList);
 
 
-    @Transactional// Better?
+    @Transactional
     @Query("SELECT i.lemmaEntity " +
             "FROM IndexEntity i " +
             "WHERE i.lemmaEntity.lemma IN (:lemmaStringSet) " +

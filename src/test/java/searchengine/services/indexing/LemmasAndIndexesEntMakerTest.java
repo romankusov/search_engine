@@ -96,11 +96,10 @@ class LemmasAndIndexesEntMakerTest {
     @SneakyThrows
     @DisplayName("Test getting indexes for save to DB")
     void getIndexEntityQueueForSave() {
-        Set<LemmaEntity> testLemmaSet = testLemmasAndIndexesEntMaker.getLemmaMapForDb().keySet();
-        List<LemmaEntity> testList = new ArrayList<>(testLemmaSet);
-        List<LemmaEntity> testLemmaEntList = testLemmasAndIndexesEntMaker.getLemmasListForSave();
         ConcurrentLinkedQueue<IndexEntity> actualQueue = testLemmasAndIndexesEntMaker.getIndexEntityQueue();
+        List<IndexEntity> expectedIndexes = new ArrayList<>(actualQueue);
+        List<IndexEntity> actualIndexes = new ArrayList<>(expectedIndexEntityQueue);
 
-        assertEquals(expectedIndexEntityQueue.toString(), actualQueue.toString());
+        assertEquals(expectedIndexes, actualIndexes);
     }
 }
